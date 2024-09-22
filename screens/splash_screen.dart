@@ -30,21 +30,13 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueAccent,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            decoration: const BoxDecoration(shape: BoxShape.circle),
-          ),
-          const SizedBox(height: 10),
-          const Text(
-            "CookSavvy",
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontStyle: FontStyle.italic,
-                fontSize: 40),
+          Image.asset(
+            'images/CookSavvy_plain.png',
+            alignment: Alignment.center,
           ),
         ],
       ),

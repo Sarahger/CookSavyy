@@ -1,4 +1,6 @@
+import 'package:cooksavvy_app/screens/register_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -28,12 +30,17 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Greeting Text
-              const Text(
-                'Welcome back!',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
+              Text(
+                'Welcome Back!',
+                style: GoogleFonts.alice(
+                  textStyle: Theme.of(context).textTheme.displayLarge,
+                  fontSize: 48,
+                  fontWeight: FontWeight.w700,
+                  fontStyle: FontStyle.italic,
                 ),
+              ),
+              const SizedBox(
+                height: 100,
               ),
               // Email Textfield
               Padding(
@@ -42,11 +49,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
                   decoration: const InputDecoration(
+                    fillColor: Colors.white,
                     label: Text('Email'),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                       borderSide: BorderSide(
-                        color: Colors.blue,
+                        color: Color.fromARGB(255, 4, 114, 11),
                         style: BorderStyle.solid,
                       ),
                     ),
@@ -60,11 +68,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   controller: _passwordController,
                   obscureText: true,
                   decoration: const InputDecoration(
+                    fillColor: Colors.white,
                     label: Text('Password'),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                       borderSide: BorderSide(
-                        color: Colors.blue,
+                        color: Color.fromARGB(255, 4, 114, 11),
                         style: BorderStyle.solid,
                       ),
                     ),
@@ -77,7 +86,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: WidgetStatePropertyAll(
                     EdgeInsets.symmetric(horizontal: 50),
                   ),
-                  backgroundColor: WidgetStatePropertyAll(Colors.blue),
+                  backgroundColor:
+                      WidgetStatePropertyAll(Color.fromARGB(255, 44, 160, 8)),
                   foregroundColor: WidgetStatePropertyAll(Colors.white),
                 ),
                 onPressed: () {},
@@ -88,24 +98,57 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               // Sign up option
               const SizedBox(height: 10),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Don't have an account?"),
-                  SizedBox(width: 5),
-                  Text(
-                    "Register Now!",
-                    style: TextStyle(
-                      color: Colors.blue,
+                  const Text(
+                    "Don't have an account?",
+                  ),
+                  const SizedBox(width: 5),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (e) => const RegisterScreen(),
+                        ),
+                      );
+                    },
+                    child: const Text(
+                      'Register Now!',
+                      style: TextStyle(
+                        color: Colors.blue,
+                      ),
                     ),
-                  )
+                  ),
                 ],
               ),
+              const SizedBox(height: 100),
               // Sign in with Google
-              TextButton.icon(
-                onPressed: () {},
-                label: const Text('Sign In with Google'),
-                icon: const Icon(Icons.person_outline_rounded),
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.black,
+                    style: BorderStyle.solid,
+                  ),
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
+                ),
+                margin: const EdgeInsets.symmetric(horizontal: 40),
+                child: Container(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'images/google_icon.jpeg',
+                        height: 25,
+                        width: 25,
+                      ),
+                      const SizedBox(width: 10,),
+                      const Text('Sign In with Google'),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),
